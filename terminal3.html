@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>GEOM-OS Terminal</title>
+<title>Servidor LA Terminal</title>
 
 <style>
 
@@ -34,6 +34,142 @@ margin-top:10px;
 
 button{
 background:black;
+color:#00ff00;
+border:1px solid #00ff00;
+padding:10px;
+margin-top:10px;
+cursor:pointer;
+width:100%;
+}
+
+button:hover{
+background:#003300;
+}
+
+.progress{
+width:100%;
+background:#001100;
+margin-top:20px;
+}
+
+.progress-bar{
+height:20px;
+width:0%;
+background:#00ff00;
+}
+
+.fail{
+color:red;
+font-weight:bold;
+}
+
+.success{
+color:#00ff00;
+font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="terminal">
+
+<h2>Servidor Liceo de Apodaca TERMINAL 01</h2>
+
+<p id="intro"></p>
+
+<input id="a1" placeholder="Respuesta 1">
+<input id="a2" placeholder="Respuesta 2">
+<input id="a3" placeholder="Respuesta 3">
+
+<button onclick="checkAnswer()">EXECUTE COMMAND</button>
+
+<button onclick="goBack()">RETURN TO MAINFRAME</button>
+
+<div class="progress">
+<div class="progress-bar" id="bar"></div>
+</div>
+
+<p id="response"></p>
+
+</div>
+
+<script>
+
+const introText =
+"> ACCESSING TERMINAL...\n> SYSTEM LOCKED\n> ENTER YOUR RESULTS";
+
+let i = 0;
+
+function typeIntro(){
+if(i < introText.length){
+document.getElementById("intro").innerHTML += introText.charAt(i);
+i++;
+setTimeout(typeIntro,30);
+}
+}
+
+typeIntro();
+
+
+function checkAnswer(){
+
+let ans1 = document.getElementById("a1").value.trim();
+let ans2 = document.getElementById("a2").value.trim();
+let ans3 = document.getElementById("a3").value.trim();
+
+let response = document.getElementById("response");
+let bar = document.getElementById("bar");
+
+response.innerHTML="> INTENTANDO HACKEAR EL SISTEMA...";
+bar.style.width="0%";
+
+let progress = 0;
+
+let loading = setInterval(function(){
+
+progress += 20;
+bar.style.width = progress + "%";
+
+if(progress >= 100){
+
+clearInterval(loading);
+
+// Coordenadas correctas
+let correct = ["(4,0)", "(7,0)", "(5,3)"];
+let inputs = [ans1, ans2, ans3];
+
+// Verifica sin importar el orden
+let isCorrect = inputs.length === 3 && inputs.every(coord => correct.includes(coord));
+
+if(isCorrect){
+
+response.innerHTML =
+"<span class='success'>ACCESS GRANTED</span><br>PASSWORD WORD: MATHEMATICS<br><br>> RETURN TO MAINFRAME";
+
+}
+else{
+
+response.innerHTML =
+"<span class='fail'>HACKEO FALLIDO</span>";
+
+}
+
+}
+
+},600);
+
+}
+
+function goBack(){
+window.location.href = "index.html";
+}
+
+</script>
+
+</body>
+</html>
 color:#00ff00;
 border:1px solid #00ff00;
 padding:10px;
