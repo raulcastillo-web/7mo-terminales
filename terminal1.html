@@ -75,7 +75,7 @@ font-weight:bold;
 
 <div class="terminal">
 
-<h2>Servidor Liceo de Apodaca TERMINAL 01</h2>
+<h2>Servidor LA TERMINAL 01</h2>
 
 <p id="intro"></p>
 
@@ -98,7 +98,7 @@ font-weight:bold;
 <script>
 
 const introText =
-"> ACCESSING TERMINAL...\n> SYSTEM LOCKED\n> ENTER YOUR RESULTS";
+"> ACCESSING TERMINAL...\n> SYSTEM LOCKED\n> ENTER FINAL COORDINATES";
 
 let i = 0;
 
@@ -136,17 +136,15 @@ if(progress >= 100){
 
 clearInterval(loading);
 
-// Coordenadas correctas
-let correct = ["0.5", "0.33", "1"];
-let inputs = [ans1, ans2, ans3];
+// Coordenadas correctas (ORDEN IMPORTA)
+let correct1="0.5";
+let correct2="0.33";
+let correct3="1";
 
-// Verifica sin importar el orden
-let isCorrect = inputs.length === 3 && inputs.every(coord => correct.includes(coord));
-
-if(isCorrect){
+if(ans1 === correct1 && ans2 === correct2 && ans3 === correct3){
 
 response.innerHTML =
-"<span class='success'>ACCESS GRANTED</span><br>PASSWORD WORD: LAS<br><br>> RETURN TO MAINFRAME";
+"<span class='success'>ACCESS GRANTED</span><br>PASSWORD WORD: Las<br><br>> RETURN TO MAINFRAME";
 
 }
 else{
