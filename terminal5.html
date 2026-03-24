@@ -75,13 +75,15 @@ font-weight:bold;
 
 <div class="terminal">
 
-<h2>Servidor Liceo de Apodaca TERMINAL 01</h2>
+<h2>Servidor LA TERMINAL 05</h2>
 
 <p id="intro"></p>
 
-<input id="a1" placeholder="Respuesta 1">
-<input id="a2" placeholder="Respuesta 2">
-<input id="a3" placeholder="Respuesta 3">
+<input id="a1" placeholder="Promedio Equipo A">
+<input id="a2" placeholder="Promedio Equipo B">
+<input id="a3" placeholder="Rango Equipo A">
+<input id="a4" placeholder="Rango Equipo B">
+<input id="a5" placeholder="Equipo mas consistente">
 
 <button onclick="checkAnswer()">EXECUTE COMMAND</button>
 
@@ -98,7 +100,7 @@ font-weight:bold;
 <script>
 
 const introText =
-"> ACCESSING TERMINAL...\n> SYSTEM LOCKED\n> ENTER YOUR RESULTS";
+"> ACCESSING TERMINAL...\n> SYSTEM LOCKED\n> ENTER FINAL COORDINATES";
 
 let i = 0;
 
@@ -118,6 +120,8 @@ function checkAnswer(){
 let ans1 = document.getElementById("a1").value.trim();
 let ans2 = document.getElementById("a2").value.trim();
 let ans3 = document.getElementById("a3").value.trim();
+let ans4 = document.getElementById("a4").value.trim();
+let ans5 = document.getElementById("a5").value.trim();
 
 let response = document.getElementById("response");
 let bar = document.getElementById("bar");
@@ -136,17 +140,17 @@ if(progress >= 100){
 
 clearInterval(loading);
 
-// Coordenadas correctas
-let correct = ["(4,0)", "(7,0)", "(5,3)"];
-let inputs = [ans1, ans2, ans3];
+// Coordenadas correctas (ORDEN IMPORTA)
+let correct1="8.8";
+let correct2="8.8";
+let correct3="2";
+let correct4="7";
+let correct5="Equipo A";  
 
-// Verifica sin importar el orden
-let isCorrect = inputs.length === 3 && inputs.every(coord => correct.includes(coord));
-
-if(isCorrect){
+if(ans1 === correct1 && ans2 === correct2 && ans3 === correct3 && ans4 === correct4 && ans5 === correct5){
 
 response.innerHTML =
-"<span class='success'>ACCESS GRANTED</span><br>PASSWORD WORD: MATHEMATICS<br><br>> RETURN TO MAINFRAME";
+"<span class='success'>ACCESS GRANTED</span><br>PASSWORD WORD: patrones<br><br>> RETURN TO MAINFRAME";
 
 }
 else{
